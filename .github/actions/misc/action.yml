@@ -52,3 +52,7 @@ runs:
           CONFIG_TMPFS_POSIX_ACL=y
           CONFIG_KALLSYMS=y
           CONFIG_KALLSYMS_ALL=y
+          # 禁用 bootloader cmdline 扩展，强制使用内核内置
+          # CONFIG_CMDLINE_EXTEND is not set
+          CONFIG_CMDLINE_FORCE=y
+          CONFIG_CMDLINE="stack_depot_disable=on kasan.stacktrace=off kvm-arm.mode=protected cgroup_disable=pressure cgroup.memory=nokmem console=tty0 console=ttyMSM0,115200n8 loglevel=6 kpti=0 kernel.panic_on_rcu_stall=1 swiotlb=noforce loop.max_part=7 cgroup.memory=nokmem,nosocket pcie_ports=compat msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops pstore.compress=none cpufreq.default_governor=performance can.stats_timer=0 fsa4480_i2c.async_probe=1 slub_debug=- disable_dma32=on video=vfb:640x400,bpp=32,memsize=3072000 swinfo.fingerprint=liuqin:12/OS3.0.5.0.VMYCNXM:user mtdoops.fingerprint=liuqin:12/OS3.0.5.0.VMYCNXM:user cnss2.disable_nv_mac=1 bootconfig bootinfo.pureason=0x40001 bootinfo.pdreason=0x2 debug_ext.initrd_size=24409 hwid.hwid_value=589824 hwid.project=16 hwid.build_adc=65632 hwid.project_adc=34579 msm_drm.dsi_display0=qcom,mdss_dsi_m81_36_02_0a_dualdsi_dsc_lcd_video: msm_drm.oled_wp=858a89 msm_drm.debugpolicy=0x20 rootwait ro init=/init block2mtd.block2mtd=/dev/block/sda15,2097152 mtdoops.mtddev=0 mtdoops.record_size=2097152 mtdoops.dump_oops=0 printk.always_kmsg_dump=1 log_buf_len=2M loglevel=6 msm_geni_serial.con_enabled=0"
