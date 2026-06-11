@@ -24,8 +24,26 @@ runs:
       uses: ./.github/actions/set-kernel-config
       with:
         config_list: |
-          CONFIG_OVERLAY_FS=y
-          CONFIG_TMPFS_XATTR=y
-          CONFIG_TMPFS_POSIX_ACL=y
-          CONFIG_KALLSYMS=y
-          CONFIG_KALLSYMS_ALL=y
+          # === 虚拟终端核心 ===
+          CONFIG_VT=y
+          CONFIG_VT_CONSOLE=y
+          CONFIG_VT_CONSOLE_DEFAULT=y
+          CONFIG_HW_CONSOLE=y
+          CONFIG_CONSOLE_TRANSLATIONS=y
+          # === TTY/PTY ===
+          CONFIG_UNIX98_PTYS=y
+          CONFIG_LEGACY_PTYS=y
+          CONFIG_LEGACY_PTY_COUNT=16
+          CONFIG_LDISC_AUTOLOAD=y
+          # === 帧缓冲控制台（让VT能显示在屏幕上）===
+          CONFIG_FB=y
+          CONFIG_FB_CMDLINE=y
+          CONFIG_FRAMEBUFFER_CONSOLE=y
+          CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY=y
+          # === DRM 兼容（GKI通常用DRM，需要FB模拟）===
+          CONFIG_DRM_FBDEV_EMULATION=y
+          CONFIG_DRM_KMS_HELPER=y
+          # === 启动日志级别 ===
+          CONFIG_CONSOLE_LOGLEVEL_DEFAULT=7
+          CONFIG_CONSOLE_LOGLEVEL_QUIET=4
+          CONFIG_MESSAGE_LOGLEVEL_DEFAULT=4
